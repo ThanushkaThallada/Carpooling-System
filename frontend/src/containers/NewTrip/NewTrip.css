@@ -1,0 +1,19 @@
+.NewTrip {
+    margin: 30px auto;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 24px 28px;
+    box-sizing: border-box;
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    color: #f8fafc;
+}
+
+.todore {
+    color: #f8fafc;
+    text-align: center;
+}

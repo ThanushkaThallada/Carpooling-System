@@ -1,0 +1,39 @@
+.Car {
+    max-width: 780px;
+    width: 92%;
+    margin: 20px auto 40px;
+    padding: 20px 24px;
+    background: rgba(15, 23, 42, 0.92) !important;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    color: #f8fafc;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.Car img {
+    height: 110px !important;
+    width: auto !important;
+    max-width: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.Car h2 {
+    font-size: 1rem;
+    margin: 6px 0;
+    color: #e2e8f0;
+}
+
+.Car .header {
+    color: #38bdf8;
+    font-weight: 700;
+}

@@ -1,0 +1,65 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.telerik'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+ext {
+    set('springCloudVersion', "Greenwich.SR2")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    implementation 'com.h2database:h2'
+    implementation 'org.jetbrains:annotations:19.0.0'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.0'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.4.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.0'
+    testImplementation group: 'junit', name: 'junit'
+    testImplementation group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
+    implementation "org.mapstruct:mapstruct:1.3.0.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.3.0.Final"
+    implementation group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.3.Final'
+
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

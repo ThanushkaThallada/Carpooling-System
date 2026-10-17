@@ -1,0 +1,203 @@
+/* Floating SOS Button */
+.SafetyHub-sos-floating-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: #ffffff;
+    border: 2px solid #fca5a5;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: sosPulse 2s infinite;
+}
+
+.SafetyHub-sos-floating-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(220, 38, 38, 0.7);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+@keyframes sosPulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+/* Safety Backdrop & Modal Overlay */
+.SafetyHub-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.SafetyHub-modal-card {
+    background: #1e293b;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 580px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    color: #f8fafc;
+    overflow: hidden;
+    animation: modalSlideUp 0.3s ease-out;
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.SafetyHub-modal-header {
+    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.SafetyHub-modal-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.SafetyHub-modal-close {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SafetyHub-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.SafetyHub-modal-body {
+    padding: 24px;
+}
+
+.SafetyHub-sos-trigger-card {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px dashed #ef4444;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.SafetyHub-sos-btn-large {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+    transition: transform 0.2s;
+}
+
+.SafetyHub-sos-btn-large:hover {
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+}
+
+.SafetyHub-alert-active {
+    background: #10b981;
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.SafetyHub-section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 16px 0 10px 0;
+}
+
+.SafetyHub-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.SafetyHub-contact-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #f1f5f9;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.SafetyHub-contact-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #38bdf8;
+}
+
+.SafetyHub-contact-icon {
+    font-size: 1.4rem;
+    color: #38bdf8;
+}
+
+.SafetyHub-contact-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.SafetyHub-contact-sub {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.SafetyHub-tips-box {
+    background: rgba(56, 189, 248, 0.08);
+    border-left: 4px solid #38bdf8;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}

@@ -1,0 +1,110 @@
+.UpiQrCode-card {
+    background: #0b1329;
+    border: 1.5px solid #38bdf8;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-width: 360px;
+    margin: 0 auto;
+    color: #e2e8f0;
+}
+
+.UpiQrCode-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #38bdf8;
+    font-weight: 800;
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.UpiQrCode-route {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.UpiQrCode-image-wrapper {
+    display: inline-block;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    margin: 4px 0 12px;
+    position: relative;
+}
+
+.UpiQrCode-img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+}
+
+.UpiQrCode-fare-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin: 8px 0;
+    font-size: 0.88rem;
+}
+
+.UpiQrCode-vpa-pill {
+    background: rgba(254, 240, 138, 0.1);
+    border: 1px solid rgba(254, 240, 138, 0.3);
+    color: #fef08a;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.UpiQrCode-copy-btn {
+    background: transparent;
+    border: 1px solid #fef08a;
+    color: #fef08a;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.UpiQrCode-copy-btn:hover {
+    background: #fef08a;
+    color: #0f172a;
+}
+
+.UpiQrCode-intent-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border: 1px solid #38bdf8;
+    padding: 9px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.84rem;
+    margin-top: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.UpiQrCode-intent-btn:hover {
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    text-decoration: none;
+    color: #ffffff;
+}

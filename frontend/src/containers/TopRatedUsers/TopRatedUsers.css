@@ -1,0 +1,8 @@
+.users {
+    display: inline-block;
+    margin-left: 40px;
+    color: whitesmoke;
+    padding: auto;
+    text-align-all: center;
+    /*max-width: 250px;*/
+}

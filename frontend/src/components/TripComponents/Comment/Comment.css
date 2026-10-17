@@ -1,0 +1,12 @@
+.Comment {
+    flex-flow: row wrap;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    height: 320px;
+}
+
+
+
+.metadata {
+    color: mediumseagreen;
+}
