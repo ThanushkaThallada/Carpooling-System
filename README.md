@@ -135,27 +135,6 @@ The React application will open automatically at `http://localhost:3000`.
 
 ---
 
-## Deployment Guide (Getting Your Live Deploy Link)
-
-### Option A: Deploy Frontend to Vercel (Recommended for Live Demo)
-1. Push this repository to your GitHub account (see instructions below).
-2. Go to [Vercel](https://vercel.com) and click **"Add New Project"**.
-3. Import your GitHub repository.
-4. Set **Root Directory** to `frontend`.
-5. Under **Build and Output Settings**:
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `build`
-6. Click **Deploy**. Vercel will provide an instant, permanent live URL (e.g. `https://carpooling-app.vercel.app`).
-
-### Option B: Deploy Backend to Render or Railway
-1. Go to [Render](https://render.com) or [Railway](https://railway.app).
-2. Connect your GitHub repository.
-3. Choose **Docker** or **Java / Gradle** environment.
-4. Set the build command to `./gradlew build -x test` and start command to `java -jar build/libs/*.jar`.
-5. Copy your live backend URL and set `REACT_APP_API_BASE_URL` in the frontend.
-
----
-
 ## Demo Test Credentials
 
 | Role | Username | One-Click Button | Access Scope |
