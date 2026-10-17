@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd frontend && CI=false NODE_OPTIONS=--openssl-legacy-provider npm run build",
+  "outputDirectory": "frontend/build",
+  "framework": "create-react-app",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
