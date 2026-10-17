@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || 'https://carpooling-system-gqny.onrender.com').replace(/\/$/, '');
+
 const instance = axios.create({
-    baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/'
+    baseURL: API_BASE_URL + '/'
 });
 
 export default instance;

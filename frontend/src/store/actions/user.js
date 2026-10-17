@@ -115,7 +115,7 @@ export const fetchUsers = (token,queryParams) => {
             "Content-Type":"application/json",
             'Authorization':token
         };
-        axios.get( 'http://localhost:8080/users' + queryParams, {headers})
+        axios.get( '/users' + queryParams, {headers})
             .then( res => {
                 const fetchedUsers = [];
                 for ( let key in res.data ) {

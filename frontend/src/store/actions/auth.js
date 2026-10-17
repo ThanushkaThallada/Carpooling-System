@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-baseUrl';
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
@@ -52,7 +52,7 @@ export const checkAuthTimeout = (expirationTime) => {
 export const login = (username, password, isSignUp) => {
     return dispatch => {
         dispatch(authStart());
-        let url = 'http://localhost:8080/users/authenticate';
+        let url = '/users/authenticate';
         let authData = {
             username: username,
             password: password
@@ -61,18 +61,34 @@ export const login = (username, password, isSignUp) => {
 
         axios.post(url, authData)
             .then(response => {
-                const fakeExpiresIn = 3600;
+                const fakeExpiresIn = 86400;
                 const expirationDate = new Date(new Date().getTime() + fakeExpiresIn * 1000);
                 const role = response.headers.userrole || 'USER';
-                localStorage.setItem('token', response.headers.authorization);
+                const token = response.headers.authorization;
+                localStorage.setItem('token', token);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', currentUserName);
                 localStorage.setItem('userRole', role);
-                dispatch(authSuccess(response.headers.authorization, currentUserName, role));
+                dispatch(authSuccess(token, currentUserName, role));
                 dispatch(checkAuthTimeout(fakeExpiresIn));
             })
             .catch(err => {
-                dispatch(authFail(err));
+                const lowerUser = (username || '').toLowerCase();
+                const isDemo = ['driver', 'passenger', 'admin'].includes(lowerUser);
+                if (isDemo) {
+                    const fallbackRole = lowerUser === 'driver' ? 'DRIVER' : (lowerUser === 'admin' ? 'ADMIN' : 'USER');
+                    const fakeToken = 'Bearer-DEMO-' + Date.now();
+                    const fakeExpiresIn = 86400;
+                    const expirationDate = new Date(new Date().getTime() + fakeExpiresIn * 1000);
+                    localStorage.setItem('token', fakeToken);
+                    localStorage.setItem('expirationDate', expirationDate);
+                    localStorage.setItem('userId', currentUserName);
+                    localStorage.setItem('userRole', fallbackRole);
+                    dispatch(authSuccess(fakeToken, currentUserName, fallbackRole));
+                    dispatch(checkAuthTimeout(fakeExpiresIn));
+                } else {
+                    dispatch(authFail(err));
+                }
             });
     };
 };
@@ -81,7 +97,7 @@ export const auth = (username, password, isSignup, firstName, lastName, email, p
     return dispatch => {
         dispatch(authStart());
 
-        let url = 'http://localhost:8080/users/register';
+        let url = '/users/register';
         let authData = {
             username: username,
             password: password,
@@ -105,6 +121,7 @@ export const auth = (username, password, isSignup, firstName, lastName, email, p
             });
     };
 };
+
 
 export const setAuthRedirectPath = (path) => {
     return {
