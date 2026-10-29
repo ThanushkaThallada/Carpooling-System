@@ -1,10 +1,7 @@
 import React from 'react';
 import './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
-import {
-    FaBell, FaChartLine, FaUsers, FaIdCard, FaCar,
-    FaMoneyBillWave, FaShieldAlt, FaBullhorn
-} from 'react-icons/fa';
+import { FaBell } from 'react-icons/fa';
 
 const navigationItems = ( props ) => {
     const savedRole = (props.userId && localStorage.getItem('user_role_' + props.userId.toLowerCase())) || props.userRole;
@@ -25,49 +22,49 @@ const navigationItems = ( props ) => {
                         link="/admin?tab=overview"
                         isActive={(match, location) => location && location.pathname === '/admin' && (!location.search || location.search.includes('tab=overview'))}
                     >
-                        <FaChartLine style={{ marginRight: '5px' }} /> Overview
+                        Overview
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=users"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=users')}
                     >
-                        <FaUsers style={{ marginRight: '5px' }} /> Users & Drivers
+                        Users & Drivers
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=verification"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=verification')}
                     >
-                        <FaIdCard style={{ marginRight: '5px' }} /> Verification
+                        Verification
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=rides"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=rides')}
                     >
-                        <FaCar style={{ marginRight: '5px' }} /> Rides
+                        Rides
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=transactions"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=transactions')}
                     >
-                        <FaMoneyBillWave style={{ marginRight: '5px' }} /> Transactions
+                        Transactions
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=complaints"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=complaints')}
                     >
-                        <FaShieldAlt style={{ marginRight: '5px' }} /> Complaints & Safety
+                        Complaints & Safety
                     </NavigationItem>
 
                     <NavigationItem
                         link="/admin?tab=reports"
                         isActive={(match, location) => location && location.pathname === '/admin' && location.search.includes('tab=reports')}
                     >
-                        <FaBullhorn style={{ marginRight: '5px' }} /> Reports
+                        Reports
                     </NavigationItem>
                 </>
             ) : null}
