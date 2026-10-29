@@ -81,9 +81,18 @@ class Home extends Component {
         const totalSavings = totalSoloCost - costPerPerson;
         const co2SavedKg = Math.round(calcDistance * 0.12 * calcPassengers);
 
-        const isDriver = this.props.userId === 'driver';
-        const isPassenger = this.props.userId === 'passenger' || (!this.props.isAdmin && !isDriver);
+        const savedRole = (this.props.userId && localStorage.getItem('user_role_' + this.props.userId.toLowerCase())) || localStorage.getItem('userRole');
+        const isAdmin = this.props.isAdmin || (this.props.userId && this.props.userId.toLowerCase() === 'admin') || savedRole === 'ADMIN';
+        const isDriver = !isAdmin && ((this.props.userId && this.props.userId.toLowerCase() === 'driver') || savedRole === 'DRIVER');
+        const isPassenger = !isAdmin && !isDriver;
         const displayName = this.props.userId ? this.props.userId.toUpperCase() : 'TRAVELER';
+
+        let roleLabel = 'PASSENGER';
+        if (isAdmin) {
+            roleLabel = 'ADMIN';
+        } else if (isDriver) {
+            roleLabel = 'DRIVER';
+        }
 
         return (
             <div className="Home-wrapper">
@@ -127,7 +136,7 @@ class Home extends Component {
                 <div className="Home-hero-card">
                     {this.props.isAuthenticated && (
                         <div className="Home-badge-user">
-                            <FaUserCheck /> Logged in as: {displayName} ({isDriver ? '🚗 DRIVER' : '👤 PASSENGER'})
+                            <FaUserCheck /> Logged in as: {displayName} ( {roleLabel} )
                         </div>
                     )}
                     <h1 className="Home-hero-title">
