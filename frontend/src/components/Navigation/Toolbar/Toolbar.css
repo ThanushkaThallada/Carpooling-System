@@ -10,7 +10,10 @@
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
-    background-color: black;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .Toolbar nav {
