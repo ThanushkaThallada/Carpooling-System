@@ -58,8 +58,39 @@ export const login = (username, password, isSignUp) => {
             password: password
         };
         let currentUserName = username;
+        const lowerUser = (username || '').toLowerCase();
+        const isDemo = ['driver', 'passenger', 'admin'].includes(lowerUser);
 
-        axios.post(url, authData)
+        if (isDemo) {
+            // Instantaneous login for demo users - 0 waiting time!
+            const fallbackRole = lowerUser === 'driver' ? 'DRIVER' : (lowerUser === 'admin' ? 'ADMIN' : 'USER');
+            const fakeToken = 'Bearer-DEMO-' + Date.now();
+            const fakeExpiresIn = 86400;
+            const expirationDate = new Date(new Date().getTime() + fakeExpiresIn * 1000);
+            localStorage.setItem('token', fakeToken);
+            localStorage.setItem('expirationDate', expirationDate);
+            localStorage.setItem('userId', currentUserName);
+            localStorage.setItem('userRole', fallbackRole);
+            localStorage.setItem('user_role_' + lowerUser, fallbackRole);
+            dispatch(authSuccess(fakeToken, currentUserName, fallbackRole));
+            dispatch(checkAuthTimeout(fakeExpiresIn));
+
+            // Background sync with live backend
+            axios.post(url, authData, { timeout: 8000 })
+                .then(response => {
+                    const realToken = response.headers.authorization;
+                    const realRole = response.headers.userrole || fallbackRole;
+                    if (realToken) {
+                        localStorage.setItem('token', realToken);
+                        localStorage.setItem('userRole', realRole);
+                        dispatch(authSuccess(realToken, currentUserName, realRole));
+                    }
+                })
+                .catch(() => {});
+            return;
+        }
+
+        axios.post(url, authData, { timeout: 15000 })
             .then(response => {
                 const fakeExpiresIn = 86400;
                 const expirationDate = new Date(new Date().getTime() + fakeExpiresIn * 1000);
@@ -73,22 +104,7 @@ export const login = (username, password, isSignUp) => {
                 dispatch(checkAuthTimeout(fakeExpiresIn));
             })
             .catch(err => {
-                const lowerUser = (username || '').toLowerCase();
-                const isDemo = ['driver', 'passenger', 'admin'].includes(lowerUser);
-                if (isDemo) {
-                    const fallbackRole = lowerUser === 'driver' ? 'DRIVER' : (lowerUser === 'admin' ? 'ADMIN' : 'USER');
-                    const fakeToken = 'Bearer-DEMO-' + Date.now();
-                    const fakeExpiresIn = 86400;
-                    const expirationDate = new Date(new Date().getTime() + fakeExpiresIn * 1000);
-                    localStorage.setItem('token', fakeToken);
-                    localStorage.setItem('expirationDate', expirationDate);
-                    localStorage.setItem('userId', currentUserName);
-                    localStorage.setItem('userRole', fallbackRole);
-                    dispatch(authSuccess(fakeToken, currentUserName, fallbackRole));
-                    dispatch(checkAuthTimeout(fakeExpiresIn));
-                } else {
-                    dispatch(authFail(err));
-                }
+                dispatch(authFail(err));
             });
     };
 };

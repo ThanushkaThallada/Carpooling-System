@@ -159,7 +159,9 @@ class Auth extends Component {
                 touched: true
             })
         });
-        this.setState({ controlsLogin: updatedControls, isSignup: false });
+        this.setState({ controlsLogin: updatedControls, isSignup: false }, () => {
+            this.props.onAuth(username, password, false);
+        });
     };
 
     inputChangedHandlerLogin = ( event, controlName ) => {
