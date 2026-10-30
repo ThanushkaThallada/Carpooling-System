@@ -24,8 +24,8 @@
     "username": "^5.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI=false NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env CI=false NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "react-router-dom": "^5.0.1"
   }
 }
